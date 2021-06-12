@@ -1,38 +1,24 @@
-"""Custom topology example
-
-Two directly connected switches plus a host for each switch:
-
-   host --- switch --- switch --- host
-
-Adding the 'topos' dict with a key/value pair to generate our newly defined
-topology enables one to pass in '--topo=mytopo' from the command line.
-"""
-
 from mininet.topo import Topo
 
 class s2h2( Topo ):
-    "Simple topology example."
+    # 2 Switches of 2 Hosts
 
     def build( self ):
-        "Create custom topo."
 
         # Add hosts and switches
-        h1 = self.addHost( 'h1' )
-        h2 = self.addHost( 'h2' )
-        h3 = self.addHost( 'h3' )
-        h4 = self.addHost( 'h4' )
-        s1 = self.addSwitch( 's1' )
-        s2 = self.addSwitch( 's2' )
-        c1 = self.addController( 'c1' )
+        h1 = self.addHost( 'h1', ip='11.0.0.1' )
+        h2 = self.addHost( 'h2', ip='11.0.0.2' )
+        h3 = self.addHost( 'h3', ip='12.0.0.3' )
+        h4 = self.addHost( 'h4', ip='12.0.0.4' )
+        s1 = self.addSwitch( 's1', ip='11.0.0.' )
+        s2 = self.addSwitch( 's2', ip='12.0.0.0' )
 
         # Add links
-        self.addLink( h1, s1 )
-        self.addLink( h2, s1 )
-        self.addLink( s1, s2 )
-        self.addLink( h3, s2 )
-        self.addLink( h4, s2 )
-        self.addLink( s1, c1 )
-        self.addLink( s2, c1 )
+        self.addLink( h1, s1, cls=TCLink,bw=10, delay=10 )
+        self.addLink( h2, s1, cls=TCLink,bw=15 )
+        self.addLink( s1, s2, cls=TCLink,bw=10 )
+        self.addLink( h3, s2, cls=TCLink,bw=20 )
+        self.addLink( h4, s2, cls=TCLink,bw=25 )
 
         
 
