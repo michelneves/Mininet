@@ -14,11 +14,11 @@ class s2h2( Topo ):
         s2 = self.addSwitch( 's2', ip='12.0.0.0' )
 
         # Add links
-        self.addLink( h1, s1, cls=TCLink,bw=10, delay=10 )
-        self.addLink( h2, s1, cls=TCLink,bw=15 )
-        self.addLink( s1, s2, cls=TCLink,bw=10 )
-        self.addLink( h3, s2, cls=TCLink,bw=20 )
-        self.addLink( h4, s2, cls=TCLink,bw=25 )
+        self.addLink( h1, s1,bw=10, delay=150 )
+        self.addLink( h2, s1,bw=15, delay=100 )
+        self.addLink( s1, s2,bw=10, delay=10 )
+        self.addLink( h3, s2,bw=20, delay=75 )
+        self.addLink( h4, s2,bw=25, delay=30 )
 
         
 

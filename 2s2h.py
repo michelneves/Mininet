@@ -7,10 +7,10 @@ def emptyNet():
 
     "Create an empty network and add nodes to it."
 
-    net = Mininet()#( controller=RemoteController )
+    net = Mininet(controller=RemoteController )
 
-    #info( '*** Adding controller\n' )
-    #net.addController( 'c0', controller=RemoteController,ip="192.168.57.3",port=6633 )
+    info( '*** Adding controller\n' )
+    net.addController( 'c0', controller=RemoteController,ip="192.168.57.3",port=6633 )
 
     info( '*** Adding hosts\n' )
     h1 = net.addHost( 'h1', ip='11.0.0.1' )
